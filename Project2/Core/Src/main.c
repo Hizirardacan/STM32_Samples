@@ -14,7 +14,34 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
-  */
+  
+  /*
+  This code is written for the STM32F401RE (Nucleo-F401RE) development board.
+
+  Functionality:
+  --------------
+  - Continuously reads analog voltage from ADC1 (e.g. a potentiometer on PA0).
+  - Maintains a circular buffer of the last 1024 voltage readings.
+  - Computes the running average of these readings in real-time.
+
+  - When the user **presses the blue button (B1)** (external interrupt on the Button pin):
+      • GPIOA PIN_5 (LD2 onboard LED) turns ON,
+      • The averaged voltage value is printed over USART2 (e.g. to a serial terminal),
+      • Then the LED turns OFF.
+
+  Clock Configuration:
+  --------------------
+  - HSE = 8 MHz external crystal
+  - PLL config: M = 4, N = 84, P = 2 → SYSCLK = 84 MHz
+  - APB1 prescaler = 2 → APB1 = 42 MHz (USART2 is on APB1)
+  - ADC resolution: 12-bit, reference voltage = 3.3V
+
+  Output:
+  -------
+  Example UART message (via USB virtual COM port):
+      Voltage: 1.643 V
+*/
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -60,32 +87,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/*
-  This code is written for the STM32F401RE (Nucleo-F401RE) development board.
-
-  Functionality:
-  --------------
-  - Continuously reads analog voltage from ADC1 (e.g. a potentiometer on PA0).
-  - Maintains a circular buffer of the last 1024 voltage readings.
-  - Computes the running average of these readings in real-time.
-
-  - When the user **presses the blue button (B1)** (external interrupt on the Button pin):
-      • GPIOA PIN_5 (LD2 onboard LED) turns ON,
-      • The averaged voltage value is printed over USART2 (e.g. to a serial terminal),
-      • Then the LED turns OFF.
-
-  Clock Configuration:
-  --------------------
-  - HSE = 8 MHz external crystal
-  - PLL config: M = 4, N = 84, P = 2 → SYSCLK = 84 MHz
-  - APB1 prescaler = 2 → APB1 = 42 MHz (USART2 is on APB1)
-  - ADC resolution: 12-bit, reference voltage = 3.3V
-
-  Output:
-  -------
-  Example UART message (via USB virtual COM port):
-      Voltage: 1.643 V
-*/
 
 /* USER CODE END 0 */
 

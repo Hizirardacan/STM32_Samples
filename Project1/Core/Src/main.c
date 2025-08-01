@@ -14,7 +14,21 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
-  */
+  
+  
+/*
+  This code runs on the STM32F401RE (Nucleo-F401RE) development board.
+
+  It uses Timer 2 (TIM2) to generate an interrupt every 0.5 seconds.
+  In the timer interrupt callback, the code toggles the state of GPIO pin PA5.
+  This pin controls the onboard green LED (LD2), so the LED blinks ON and OFF.
+
+  Timer settings:
+    - HSE = 8 MHz
+    - PLL = 84 MHz system clock
+    - TIM2 prescaler = 8399, period = 5000 → 0.5s interval
+*/
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -59,20 +73,6 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-/*
-  This code runs on the STM32F401RE (Nucleo-F401RE) development board.
-
-  It uses Timer 2 (TIM2) to generate an interrupt every 0.5 seconds.
-  In the timer interrupt callback, the code toggles the state of GPIO pin PA5.
-  This pin controls the onboard green LED (LD2), so the LED blinks ON and OFF.
-
-  Timer settings:
-    - HSE = 8 MHz
-    - PLL = 84 MHz system clock
-    - TIM2 prescaler = 8399, period = 5000 → 0.5s interval
-*/
-
 
 /* USER CODE END 0 */
 

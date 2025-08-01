@@ -14,6 +14,20 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
+  
+  /**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body for ADC voltage averaging and UART transmission
+  ******************************************************************************
+  * Description:
+  * This program continuously reads analog voltages from two ADC channels,
+  * averages 1024 samples for each channel, and transmits the average voltage
+  * values over UART (USART2) every 200ms. GPIO PA11 is set HIGH at startup.
+  *
+  * Board: STM32F4 Series (e.g., Nucleo-F401RE or similar)
+  ******************************************************************************
+  
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
